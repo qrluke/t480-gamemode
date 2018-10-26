@@ -1,27 +1,32 @@
 @ECHO OFF
 REM BFCPEOPTIONSTART
 REM Advanced BAT to EXE Converter www.BatToExeConverter.com
-REM BFCPEEXE=C:\Users\qrlk\Desktop\qq.exe
-REM BFCPEICON=
+REM BFCPEEXE=C:\Users\qrlk\Documents\t480-gamemode\T480-gamemode-off.exe
+REM BFCPEICON=C:\Program Files (x86)\Advanced BAT to EXE Converter v4.09\ab2econv409\icons\icon11.ico
 REM BFCPEICONINDEX=-1
 REM BFCPEEMBEDDISPLAY=0
 REM BFCPEEMBEDDELETE=1
 REM BFCPEADMINEXE=1
 REM BFCPEINVISEXE=0
-REM BFCPEVERINCLUDE=0
+REM BFCPEVERINCLUDE=1
 REM BFCPEVERVERSION=1.0.0.0
-REM BFCPEVERPRODUCT=Product Name
-REM BFCPEVERDESC=Product Description
-REM BFCPEVERCOMPANY=Your Company
-REM BFCPEVERCOPYRIGHT=Copyright Info
+REM BFCPEVERPRODUCT=T480 gamemode off
+REM BFCPEVERDESC=Disabling gamemode on T480
+REM BFCPEVERCOMPANY=T480 users
+REM BFCPEVERCOPYRIGHT=qrlk
 REM BFCPEOPTIONEND
 @ECHO ON
 @echo off
 start cmd /c C:\Windows\devcon.exe rescan
-start cmd /k C:\Windows\devcon.exe enable "ACPI\VEN_LEN&DEV_0100"
+timeout 1
+start cmd /c C:\Windows\devcon.exe enable "ACPI\VEN_LEN&DEV_0100"
+timeout 1
 start cmd /c sc start LITSSVC
+timeout 1
 start cmd /c sc start esifsvc
-powershell -c "$wshell = New-Object -ComObject wscript.shell; $wshell.SendKeys('^+{S}')
+timeout 1
+powershell -c "$wshell = New-Object -ComObject wscript.shell; $wshell.SendKeys('^+{S}')"
+timeout 1
 powershell -c "$xtu_path = 'C:\Program Files (x86)\Intel\Intel(R) Extreme Tuning Utility\Client\XTUCli.exe';
 $status = get-service -name "XTU3SERVICE" | Select-Object {$_.status} | format-wide;
 if ($status -ne "Running") { start-service -name "XTU3SERVICE"};

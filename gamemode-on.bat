@@ -29,7 +29,7 @@ start cmd /c sc stop LITSSVC
 timeout 1
 start cmd /c sc stop esifsvc
 timeout 1
-powershell -c "$wshell = New-Object -ComObject wscript.shell; $wshell.SendKeys('^+{M}')
+powershell -c "$wshell = New-Object -ComObject wscript.shell; $wshell.SendKeys('^+{M}')"
 timeout 1
 powershell -c "$xtu_path = 'C:\Program Files (x86)\Intel\Intel(R) Extreme Tuning Utility\Client\XTUCli.exe';
 $status = get-service -name "XTU3SERVICE" | Select-Object {$_.status} | format-wide;
